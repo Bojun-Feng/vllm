@@ -1,3 +1,4 @@
+import os
 import enum
 import time
 from collections import deque
@@ -716,7 +717,7 @@ class Scheduler:
             remaining_waiting, prefills = self._schedule_prefills(
                 self.waiting, budget, curr_loras, enable_chunking=False)
 
-        fcfs_policy = PolicyFactory.get_policy(policy_name="fcfs")
+        fcfs_policy = PolicyFactory.get_policy(policy_name=os.environ['VLLM_SCHEDULER_POLICY'])
         # Don't schedule decodes if prefills are scheduled.
         # NOTE: If `_schedule_prefills` doesn't enable chunking, self.running
         # only contains decode requests, not chunked prefills.

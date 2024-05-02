@@ -212,6 +212,7 @@ class Sequence:
         eos_token_id: Optional[int] = None,
         lora_request: Optional[LoRARequest] = None,
     ) -> None:
+        print("SEQUENCE", "\n\nid", seq_id, "\n\nprompt", prompt, "\n\nbsize", block_size)
         self.seq_id = seq_id
         self.prompt = prompt
         self.block_size = block_size
